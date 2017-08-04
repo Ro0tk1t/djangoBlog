@@ -1,0 +1,1 @@
+想学下django，于是用django照着自己WordPress博客的样子撸了一遍，反正基本功能是实现了
