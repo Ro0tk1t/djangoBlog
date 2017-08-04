@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ artical.title }}</title>
+    <style>
+        #article_body{font-family:Arial; background-color:#E0FFFF; width:90%; margin:0 auto; display:inline-block }
+        #article_title{font-size:25px; }
+        #article_date{color:grey; text-decoration:none}
+        #article_auth{color:grey; text-decoration:none}
+        #article_type{color:grey; text-decoration:none}
+    </style>
+</head>
+<body>
+{% include 'header.html' %}
+
+<div id="article_body">
+    <div>
+        <b id="article_title">{{ article.title }}</b>
+        <br><br>
+        <h5 style="display:inline">Posted in &nbsp
+            <a id="article_date" href="">{{ article.date }}</a>
+        </h5>&nbsp&nbsp&nbsp
+        <h5 style="display:inline">auth：
+            <a href="" id="article_auth">{{ article.auth }}</a>
+        </h5>&nbsp&nbsp&nbsp
+        <h5 style="display:inline">Posted in
+            <a id="article_type" href="">{{ article.type }}</a>
+        </h5>&nbsp&nbsp&nbsp<br><br><br>
+        <h4>{{ article.context }}</h4><br><br><br>
+    </div>
+    <!--
+        <div style="float:right">
+        {% include 'righter.html' %}
+        </div>
+    -->
+
+    <div id="lables">
+        <b>标签：</b>{{ tab }}<br><br>
+        <h3>上一篇：<a href="../{{ up.id }}">{{ up.title }}</a></h3>
+        <h3>下一篇：<a href="../{{ next.id }}">{{ next.title }}</a></h3>
+    </div>
+
+    <div id="comment">
+        <b style="color:blue">Comments：</b><br><br>
+        {% for x in comment %}
+        <a href="">{{ x.username }}</a>&nbsp&nbspSay：<br>
+        <a href="" style="font-size:10px; text-decoration:none">{{ x.date }}</a><br>
+        <h4>{{ x.context }}</h4>
+        {% endfor %}
+    </div>
+    <br><br><br><br>
+
+    <div id="postComment">
+        <form action="../../comment/action" method="post">
+            {% csrf_token %}
+            <label>留下我的评论：</label><br><br>
+            <input type="hidden" name="comment_for" value="{{ article.title }}" />
+            <textarea name="context" style="width:600px;height:100px;"></textarea><br>
+            <input type="submit" style="float:left;" value="评论" />
+        </form>
+    </div>
+
+</div>
+
+{% include 'footer.html' %}
+</body>
+</html>

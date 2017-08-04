@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文章列表</title>
+</head>
+<body>
+{% for x in articles %}
+{{ x.title }}
+{{ x.context }}
+{% endfor %}
+</body>
+</html>

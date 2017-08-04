@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Account</title>
+    <script language="JavaScript">
+        function calculateArticle(articles){
+            document.write("test");
+            alert(articles.length);
+        }
+    </script>
+</head>
+<body>
+{% include 'header.html' %}
+
+<div>
+    <label>用 户 资 料</label><br>
+    <table>
+        <tr>
+            <td><h4>用 户 名：</h4></td>
+            <td>{{ user.username }}</td>
+            <td>
+                <h6>文章数 <a href="javascript:void(0);" onclick="calculateArticle({{ articles }})">{{ user.article_count }}</a>
+                    &nbsp&nbsp&nbsp&nbsp&nbsp<a href="/index/new/article">写文章</a>
+                </h6></td>
+        </tr>
+
+        <tr>
+            <td>个 性 签 名：</td>
+            <td><label>{{ user.signature }}</label></td>
+        </tr>
+
+        <tr>
+            <td>性 别：</td>
+            <td>
+
+                {{ user.sex }}</td>
+        </tr>
+
+        <tr>
+            <td>个 人 网 站：</td>
+            <td>{{ user.person_site }}</td>
+        </tr>
+
+        <tr>
+            <td>关 于 我：</td>
+            <td>{{ user.about_me }}</td>
+        </tr>
+
+        <tr>
+            <td>手 机 号：</td>
+            <td>{{ user.tel }}</td>
+        </tr>
+
+        <tr>
+            <td>生 日：</td>
+            <td>{{ user.birthday }}</td>
+        </tr>
+
+        <tr>
+            <td>注册日期：</td>
+            <td>{{ user.register_date }}</td>
+        </tr>
+    </table>
+    <a href="/index/edit/profile/{{ user.username }}">修改资料</a>
+</div>
+
+{% include 'footer.html' %}
+</body>
+</html>

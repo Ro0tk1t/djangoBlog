@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <style>
+    body{font-family:Arial;text-decoration:none;}
+
+
+        .up{width:100%;height:100%}
+        #up_b{font-size:50px}
+
+        #center_body{width:85%; height:1200px; background-color:#E0FFFF; display:inline-block;text-align:center}
+        #artical_summary{width:60%}
+        .artical_summary{float:left; text-decoration:none;}
+        #artical_title{font-size:23px; text-decoration:none; color:red; font-family:Arial}
+
+
+    </style>
+    {% load static %}
+</head>
+<body background="{% static 'media/bg.jpg' %}">
+{% include 'header.html' %}
+
+<div class="up" >
+    <center>
+        <b id="up_b">Welcome to Rootkit's Blog</b><br>
+        <HR style="FILTER: progid:DXImageTransform.Microsoft.Shadow(color:grey,direction:145,strength:10)" width="27%" color=red SIZE=1>
+        <h1>Feel free to look around</h1><br>
+        <button style="background:#FF2D2D;height:50px; width:150px;border:none" onclick="">CLICK TO BEGIN</button>
+        <br><br><br><br><br><br><br>
+    </center>
+</div>
+
+<center>
+    <div class="center_body" id="center_body">
+        <div id="artical_summary" class="artical_summary">
+            <p style="float:left">
+                {% for x in articles %}
+            <div id="title">
+                <br>&nbsp&nbsp&nbsp<a id="artical_title" href="../article/a/{{ x.id }}/">{{ x.title }}</a>
+            </div><br>
+            <div id="dates">
+                <h5>&nbsp&nbsp&nbsp Posted on
+                    <a href="">{{ x.date }}</a>&nbsp&nbsp&nbsp
+                    <a href="">{{ x.commentCount }} comment</a>&nbsp&nbsp&nbsp
+                    Post in <a href="">{{ x.type }}</a></h5>
+            </div>
+            <div id="summary">
+                <br>【领取小黄车骑行红包，和ofo一起潮自拍】你喜欢骑车，就骑上小黄车去感受城市的态度；你喜欢拍照，就用潮自拍记下<br>
+            </div>
+
+            <div id="share">
+                <HR style="float:left;FILTER: progid:DXImageTransform.Microsoft.Shadow(color:red,direction:145,strength:10)" width="10%" color=#E0E0E0 SIZE=1>
+                <br><b style="float:left;font-size:13px">分享此文章</b><br><br>
+                <button style="border:1px dotted red;border-radius:15px; background:white; color:black">Twitter</button>&nbsp&nbsp&nbsp
+                <button style="border:1px dotted red;border-radius:15px; background:white; color:black">facebook</button>&nbsp&nbsp&nbsp
+                <button style="border:1px dotted red;border-radius:15px; background:white; color:black">Google+</button>&nbsp&nbsp&nbsp
+                <button style="border:1px dotted red;border-radius:15px; background:white; color:black">Skype</button>&nbsp&nbsp&nbsp
+                <button style="border:1px dotted red;border-radius:15px; background:white; color:black">Whatsapp</button>&nbsp&nbsp&nbsp
+                <button style="border:1px dotted red;border-radius:15px; background:white; color:black">Pocket</button>&nbsp&nbsp&nbsp
+                <button style="border:1px dotted red;border-radius:15px; background:white; color:black">LinkedIn</button>&nbsp&nbsp&nbsp
+                <button style="border:1px dotted red;border-radius:15px; background:white; color:black">Emile</button><br><br><br>
+                <HR style="float:left;FILTER: progid:DXImageTransform.Microsoft.Shadow(color:red,direction:145,strength:10)" width="5%" color=red SIZE=1>
+                <br>
+            </div>
+            {% endfor %}
+            </p>
+        </div>
+
+        {% include 'righter.html' %}
+
+    </div>
+</center>
+
+{% include 'footer.html' %}
+
+</body>
+</html>

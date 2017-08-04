@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <script language="JavaScript">
+        function testAjax(){
+<!--            //document.getElementById('name').innerHTML = 'aaaaaa';
+            //alert(getElementById('name').innerHTML);
+                var xmlhttp;
+                if (window.XMLHttpRequest)
+                    {xmlhttp = new XMLHttpRequest();}
+                else{xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");}
+                xmlhttp.onreadystatechange=function(){
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200){
+                        document.getElementById('name').innerHTML = "test";
+                    }
+                }
+                //xmlhttp.open("POST",);
+                xmlhttp.send();-->
+        }
+
+        function checkNull(id){
+            x = document.getElementById(id);
+            if(!x.getAttribute('value')){
+                var y = x.nextSibling;
+                y.innerHTML = '此项不能为空！';
+            }
+            else
+            {
+                var y = x.nextSibling;
+                y.innerHTML = null;
+            }
+        }
+
+        function listenInput(event,id){
+            x = document.getElementById(id);
+            var getIn = event.target;
+            x.setAttribute('value',getIn.value);
+        }
+    </script>
+</head>
+<body>
+<div>
+    <form action="#" method="post">
+        用户名： <input type="text" onblur="checkNull(id)" id="u" oninput="listenInput(event,id)" /><label id="name"></label><br><br>
+        密 码： <input type="text" onblur="checkNull(id)" id="p" oninput="listenInput(event,id)" /><label for="" id="passwd"></label><br><br>
+        <input type="submit" value="提交" onclick="testAjax()" />
+    </form>
+</div>
+</body>
+</html>

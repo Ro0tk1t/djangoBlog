@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新文章</title>
+    {% load static %}
+</head>
+<body>
+{% include 'header.html' %}
+
+<center>
+    <div id="create_form">
+        <form method="post" action="/index/new/article/action">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td><label>文章名：</label></td>
+                    <td><input type="text" name="title" /></td>
+                </tr>
+                <tr>
+                    <td><label>内容：</label></td>
+                    <td><textarea name="context" style="width:700px;height:400px;">文章内容</textarea></td>
+                </tr>
+            </table><br>
+            <button>提交</button>
+        </form>
+    </div>
+</center>
+<script src="{% static '/js/1.js' %}"></script>
+
+{% include 'footer.html' %}
+</body>
+</html>

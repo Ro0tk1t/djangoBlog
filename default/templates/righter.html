@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>righter</title>
+    <style>
+        #last_action{background-color:red; float:right; width:35%; height:800px; display:inline-block}
+    </style>
+</head>
+<body>
+<div id="last_action">
+    <br>
+    <input type="search" style="height:35px; width:70%" placeholder="Search..." /><br><br>
+    <div class="last_artical">
+        &nbsp&nbsp&nbsp<b style="float:left;font-size:20px">近期文章</b><br><br>
+        {% for x in articles %}
+        <a href="/article/a/{{ x.id }}">{{ x.title }}</a><br>
+        {% endfor %}
+        <br><br>
+    </div>
+    <div class="artical_type">
+        &nbsp&nbsp&nbsp<b style="float:left; font-size:20px">文章分类</b><br><br>
+        {{ type }}
+        <br><br>
+    </div>
+    <div class="last_comment">
+        &nbsp&nbsp&nbsp<b style="float:left; font-size:20px">近期评论</b><br><br>
+        {% for x in comments %}
+        <a href="">{{ x.context }}</a><br>
+        {% endfor %}
+    </div><br>
+    <div>
+        <b style="float:left; font-size:20px">热门文章标签</b><br><br>
+    </div>
+</div>
+</body>
+</html>

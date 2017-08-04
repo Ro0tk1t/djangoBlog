@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修改个人资料</title>
+    {% load static %}
+    <script src="{% static '/js/checkNull.js' %}"></script>
+</head>
+<body>
+{% include 'header.html' %}
+
+<form action="{% url 'edit_profile_action' %}" method="post">
+    {% csrf_token %}
+    <label>资料修改</label><br><br><br>
+    <table>
+        <tr>
+            <td>用户名：</td>
+            <td>
+                <label>{{ user.username }}</label>
+                <input type="hidden" name="username" value="{{ user.username }}" />
+            </td>
+        </tr>
+        <tr>
+            <td>*密 &nbsp码：</td>
+            <td>
+                <input type="password" value="{{ user.passwd }}" name="passwd" onblur="checkNull(id)" id="passwd" oninput="listenInput(event,id)" /><label></label>
+            </td>
+        </tr>
+        <tr>
+            <td>个性签名：</td>
+            <td><input type="text" name="signature" value="{{ user.signature }}" /></td>
+        </tr>
+        <tr>
+            <td>生 &nbsp日：</td>
+            <td><input type="text" name="birthday" value="{{ user.birthday }}" /></td>
+        </tr>
+        <tr>
+            <td>*性 &nbsp别：</td>
+            <td>
+                <select name="sex">
+                    <option value="True">男</option>
+                    <option value="False">女</option>
+                    <!--{% for s in sex %}
+                    <option value="{{ s.0 }}">{{ s.1 }}</option>
+                    {% endfor %}-->
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>手机号：</td>
+            <td><input type="text" name="tel" value="{{ user.tel }}" /></td>
+        </tr>
+        <tr>
+            <td>个人站点：</td>
+            <td><input type="text" name="person_site" value="{{ user.person_site }}" /></td>
+        </tr>
+        <tr>
+            <td>关于我：</td><td>
+            <input type="text" name="about_me" value="{{ user.about_me }}" /></td>
+        </tr>
+    </table>
+    <input type="submit" value="修改" />
+</form>
+
+{% include 'footer.html' %}
+</body>
+</html>
